@@ -1,0 +1,5 @@
+bun.lock
+pnpm-lock.yaml
+yarn.lock
+.output
+.nitro
