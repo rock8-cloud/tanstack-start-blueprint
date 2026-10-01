@@ -3,7 +3,7 @@
 #
 # No build arguments: runtime configuration is read from the environment by the
 # server, so one image works in every environment.
-FROM oven/bun:1.3.14 AS build
+FROM oven/bun:1.4.2 AS build
 WORKDIR /app
 
 COPY package.json bun.lock ./
