@@ -14,7 +14,7 @@ COPY . .
 # Vite + Nitro emit a self-contained Node server in .output.
 RUN bun run build
 
-FROM node:22-slim AS runtime
+FROM node:24-slim AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
 # Overridden by the platform; the Nitro server reads PORT.
