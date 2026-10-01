@@ -16,9 +16,6 @@
   // pending `renovate/stability-days` check never has to gate an open PR.
   "prCreation": "not-pending",
   "internalChecksFilter": "strict",
-  // CI only runs on pull_request, so a Renovate branch has no checks of its own
-  // — without this, `strict` would defer branch creation indefinitely.
-  "internalChecksAsSuccess": true,
 
   // bun.lock is committed, so keep it fresh.
   "lockFileMaintenance": {
@@ -42,9 +39,11 @@
       "platformAutomerge": true,
     },
     {
+      // Semver allows breaking changes at any 0.x version, and a prerelease such
+      // as nitro's 3.0.x-beta can too. Those still get their own PR, but a human
+      // merges them. Last rule wins, so this one must stay below the two above.
       "description": "Never automerge 0.x or prerelease versions",
-      "comment": "Semver allows breaking changes at any 0.x version, and a prerelease such as nitro's 3.0.x-beta can too. These still get their own PR, but a human merges them. Last rule wins, so this must stay below the ones above.",
-      "matchCurrentVersion": "!/(^0)|(-)/",
+      "matchCurrentVersion": "/^0\\.|-/",
       "groupName": null,
       "automerge": false,
       "platformAutomerge": false,
